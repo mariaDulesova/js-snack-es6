@@ -20,18 +20,29 @@ var soccerTeams = [
     }
 ]
 
-var soccerTeamsExt = [];
+var soccerTeamsNew = [];
 
 for (var i = 0; i < soccerTeams.length; i++) {
     soccerTeams[i]["points"] = getRandomNumber(0,15);
     soccerTeams[i]["offences"] = getRandomNumber(0,10);
-    soccerTeamsExt.push( soccerTeams[i].name, soccerTeams[i].offences);
+
+    //ES5
+    // var soccerTeamsExt = {};
+    // soccerTeamsExt.name = soccerTeams[i].name;
+    // soccerTeamsExt.offences = soccerTeams[i].offences;
+    // soccerTeamsNew.push(soccerTeamsExt);
+
+    //ES6
+    var {name, offences} = soccerTeams[i];
+    soccerTeamsNew.push({name, offences});
 }
+
 console.log(soccerTeams);
-console.log(soccerTeamsExt);
+console.log(soccerTeamsNew)
+
 
 
 //-----FUNCTION------//
 function getRandomNumber (min, max) {
-    return randomNumber = Math.floor(Math.random() * (max - min)) + min;
+    return randomNumber = Math.floor(Math.random() * (max - min+1)) + min;
 }
